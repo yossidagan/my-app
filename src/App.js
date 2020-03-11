@@ -1,28 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import io from "socket.io-client";
+import React from "react";
+import "./App.css";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-const socket=io('localhost:3000')
+import ChatScreen from "./components/ChatScreen";
+import chatsReducer from "./store/reducers/chatsReducer";
+
+
+const rootReducer = combineReducers({
+  chats: chatsReducer
+});
+const store = createStore(rootReducer);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Route exact path="/" render={() => <ChatScreen />} />
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
