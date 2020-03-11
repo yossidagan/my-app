@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import io from "socket.io-client";
+
+const socket=io('localhost:3000')
 
 function App() {
   return (
