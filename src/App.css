@@ -28,3 +28,6 @@
   padding: 10px 20px;
 }
 
+.chatScreen .messageBox {
+  padding-top: 30px;
+}

@@ -9,7 +9,7 @@ import chatsReducer from "./store/reducers/chatsReducer";
 
 
 const rootReducer = combineReducers({
-  chats: chatsReducer
+  chatsState: chatsReducer
 });
 const store = createStore(rootReducer);
 
