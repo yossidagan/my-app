@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 4000;
-const api = require("./server/routes/api");
+const userRoutes = require("./server/routes/api/user");
+const authRoutes = require("./server/routes/api/auth");
 const mongoose = require("mongoose");
 const server = require("http").createServer(app);
 const config = require("config");
@@ -10,7 +11,10 @@ let io = require("socket.io")(server);
 
 app.use(express.json());
 
-app.use("/", api);
+
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
+
 
 app.get("/", (req, res) => res.send("Server up"));
 
