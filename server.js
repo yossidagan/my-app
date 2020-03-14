@@ -2,17 +2,13 @@ const express = require("express");
 const app = express();
 const port = 4000;
 const api = require('./server/routes/api')
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const server = require("http").createServer(app);
 
 
 let io = require("socket.io")(server);
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: false
-}))
+app.use(express.json())
 
 app.use('/', api)
 
@@ -31,7 +27,12 @@ io.on("connection", socket => {
 
 const db = require('./config/keys').mongoURI
 
-mongoose.connect(db)
+mongoose.connect(db, 
+  {
+    useNewUrlParser : true,
+    useCreateIndex : true,
+    useUnifiedTopology : true
+  })
 .then(() => console.log("MongoDB connected..."))
 .catch(err => console.log(err))
 
