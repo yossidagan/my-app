@@ -6,11 +6,18 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import ChatScreen from "./components/ChatScreen";
 import chatsReducer from "./store/reducers/chatsReducer";
+import authReducer from "./store/reducers/authReducer";
+import errorReducer from "./store/reducers/errorReducer";
+
+
 
 
 const rootReducer = combineReducers({
-  chatsState: chatsReducer
+  chatsState: chatsReducer,
+  error : errorReducer,
+  auth : authReducer
 });
+
 const store = createStore(rootReducer);
 
 function App() {
