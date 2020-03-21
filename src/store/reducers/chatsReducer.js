@@ -18,10 +18,10 @@ const chatsReducer = (state = initialState, action) => {
       let newState = { ...state, chats: state.chats.push(newMessage) };
 
       return state;
+      
     default:
       return state;
   }
-  return state;
 };
 
 export default chatsReducer;
