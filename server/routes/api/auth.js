@@ -3,13 +3,23 @@ const router = express.Router();
 const bcrypt = require("bcryptjs")
 const config = require("config")
 const jwt = require("jsonwebtoken")
+const auth = require("../../../middleware/auth")
 
 const User = require("../../models/User");
 
 router.get("/sanity", (req, res) => {
   res.send("OK!");
-});
+}); 
 
+router.get("/user", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    if (!user) throw Error('User Does not exist');
+    res.json(user);
+  } catch (e) {
+    res.status(400).json({ msg: e.message });
+  }
+});
 
 router.post("/authUser", (req, res) => {
 
