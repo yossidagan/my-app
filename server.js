@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 4000;
+const cors = require('cors')
 const userRoutes = require("./server/routes/api/user");
 const itemRoutes = require("./server/routes/api/item");
 const authRoutes = require("./server/routes/api/auth");
@@ -10,12 +11,12 @@ const config = require("config");
 
 let io = require("socket.io")(server);
 
+app.use(cors())
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/item', itemRoutes);
 app.use('/api/auth', authRoutes);
-
 
 
 app.get("/", (req, res) => res.send("Server up"));

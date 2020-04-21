@@ -17,7 +17,7 @@ router.get('/getUsers', (req, res) => {
 
 })
 router.post("/saveUser", (req, res) => {
-
+console.log(req.body)
   const { email, password} = req.body 
   
   if (!email || !password) {

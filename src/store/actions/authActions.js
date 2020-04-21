@@ -15,19 +15,7 @@ import { returnErrors } from "./errorActions"
   export const loadUser = () => (dispatch, getState) => {
       dispatch({ type: USER_LOADING})
 
-      const token = getState().auth.token
-
-      const config = {
-          headers : {
-              "Content-type": "application/json"
-          }
-      }
-
-      if (token) {
-          config.headers["x-auth=token"] = token
-      }
-
-      axios.get("/auth/user", config) 
+      axios.get("http://localhost:4000/api/auth/user", tokenConfig(getState)) 
       .then(res => dispatch({
           type: USER_LOADED,
           payload: res.data
@@ -38,4 +26,20 @@ import { returnErrors } from "./errorActions"
               type: AUTH_ERROR
           })
       })
+  }
+
+  export const tokenConfig = getState => {
+    const token = getState().auth.token
+
+    const config = {
+        headers : {
+            "Content-type": "application/json"
+        }
+    }
+
+    if (token) {
+        config.headers["x-auth=token"] = token
+    }
+
+    return config
   }
