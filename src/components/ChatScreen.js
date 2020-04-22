@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { sendMessage } from '../store/actions/chatsActions'
+import { getusers } from '../store/actions/userActions'
 import io from 'socket.io-client'
 
 const ChatScreen = () => {
@@ -10,7 +11,6 @@ const ChatScreen = () => {
   const dispatch = useDispatch()
 
   let chatsFromState = useSelector((state) => state.chatsState.chats)
-
 
   const socket = io('localhost:4000')
 
@@ -22,7 +22,6 @@ const ChatScreen = () => {
 
   const handleMessageChange = (e) => setMessage(e.target.value)
   const handleUserChange = (e) => setNewUser(e.target.value)
-
 
   const handlePress = (e) => {
     if (e.key === 'Enter') {
@@ -36,12 +35,7 @@ const ChatScreen = () => {
     setMessage('')
   }
 
-
-  const handleAddUser = async () => {
-
-
-  }
-
+  const handleAddUser = async () => {}
 
   return (
     <div className="chatScreen">
@@ -71,7 +65,9 @@ const ChatScreen = () => {
         className="userInput"
       />
 
-      <div className="addUserBtn" onClick={handleAddUser}>Add User</div>
+      <div className="addUserBtn" onClick={handleAddUser}>
+        Add User
+      </div>
     </div>
   )
 }

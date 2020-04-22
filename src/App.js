@@ -4,6 +4,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { loadUser } from '../src/store/actions/authActions'
+import { getUsers } from '../src/store/actions/userActions'
 import thunk from 'redux-thunk'
 import ChatScreen from './components/ChatScreen'
 import chatsReducer from './store/reducers/chatsReducer'
@@ -28,6 +29,8 @@ const store = createStore(
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser())
+    store.dispatch(getUsers())
+
   }, [])
 
   return (

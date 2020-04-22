@@ -12,8 +12,12 @@ router.get("/sanity", (req, res) => {
 });
 
 router.get('/getUsers', (req, res) => {
+  console.log('here')
     User.find().
-    then(users => res.send(users))
+    then(users => {
+      console.log(users)
+      res.send(users)
+    })
 
 })
 router.post("/saveUser", (req, res) => {

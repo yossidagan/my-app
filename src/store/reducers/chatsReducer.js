@@ -6,7 +6,7 @@ const initialState = {
 
 const chatsReducer = (state = initialState, action) => {
   let message = action.message;
-  console.log("message in reducer is ", message);
+  // console.log("message in reducer is ", message);
 
   let newMessage = {
     message: message
