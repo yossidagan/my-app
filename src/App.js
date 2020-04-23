@@ -10,6 +10,7 @@ import ChatScreen from './components/ChatScreen'
 import chatsReducer from './store/reducers/chatsReducer'
 import authReducer from './store/reducers/authReducer'
 import errorReducer from './store/reducers/errorReducer'
+import userReducer from './store/reducers/userReducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   chatsState: chatsReducer,
   error: errorReducer,
   auth: authReducer,
+  user: userReducer
 })
 
 const store = createStore(

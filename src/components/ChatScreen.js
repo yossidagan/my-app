@@ -23,6 +23,14 @@ const ChatScreen = () => {
   const handleMessageChange = (e) => setMessage(e.target.value)
   const handleUserChange = (e) => setNewUser(e.target.value)
 
+  // const [data, setData] = useState({user: "", message: ""})
+
+  // const handleChange = e => setData({...data, [e.target.name]: e.target.value})
+
+  // <input name="message" value={data.message} onChange={e => handleChange(e)} />
+  // <input name="user" value={data.user} onChange={e => handleChange(e)} />
+
+  
   const handlePress = (e) => {
     if (e.key === 'Enter') {
       handleSendMessage()
