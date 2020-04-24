@@ -1,27 +1,25 @@
-import { SEND_MESSAGE } from "../actions/chatsActions";
+import { SEND_MESSAGE } from '../actions/chatsActions'
 
 const initialState = {
-  chats: []
-};
+  chats: [],
+}
 
 const chatsReducer = (state = initialState, action) => {
-  let message = action.message;
-  // console.log("message in reducer is ", message);
+  let message = action.payload
 
   let newMessage = {
-    message: message
-  };
+    message: message,
+  }
 
   switch (action.type) {
     case SEND_MESSAGE:
-
-      let newState = { ...state, chats: state.chats.push(newMessage) };
-
-      return state;
-      
+      return {
+        ...state,
+        chats: [...state.chats, newMessage],
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default chatsReducer;
+export default chatsReducer

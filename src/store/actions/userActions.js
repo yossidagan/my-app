@@ -1,40 +1,38 @@
-import axios from 'axios';
-import { GET_USERS, ADD_user, DELETE_user, USER_LOADING } from './types';
-import { tokenConfig } from './authActions';
-import { returnErrors } from './errorActions';
-
+import axios from 'axios'
+import { GET_USERS, ADD_USER, DELETE_user, USER_LOADING } from './types'
+import { tokenConfig } from './authActions'
+import { returnErrors } from './errorActions'
 
 export const getUsers = () => (dispatch) => {
   console.log('here')
-  dispatch(setusersLoading());
+  dispatch(setusersLoading())
   axios
     .get('http://localhost:4000/api/users/getUsers')
-    .then(res =>
+    .then((res) =>
       dispatch({
         type: GET_USERS,
-        payload: res.data
+        payload: res.data,
       })
     )
-    .catch(err =>
+    .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
-    );
-};
+    )
+}
 
-// export const adduser = (user) => (
-//   dispatch
-// ) => {
-//   axios
-//     .post('/api/users', user)
-//     .then(res =>
-//       dispatch({
-//         type: ADD_user,
-//         payload: res.data
-//       })
-//     )
-//     .catch(err =>
-//       dispatch(returnErrors(err.response.data, err.response.status))
-//     );
-// };
+export const addUser = (user) => (dispatch) => {
+  console.log('here2')
+  axios
+    .post('http://localhost:4000/api/users/saveUser', user)
+    .then((res) =>
+      dispatch({
+        type: ADD_USER,
+        payload: res.data,
+      })
+    )
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    )
+}
 
 // export const deleteuser = (id) => (
 //   dispatch,
@@ -55,6 +53,6 @@ export const getUsers = () => (dispatch) => {
 
 export const setusersLoading = () => {
   return {
-    type: USER_LOADING
-  };
-};
+    type: USER_LOADING,
+  }
+}

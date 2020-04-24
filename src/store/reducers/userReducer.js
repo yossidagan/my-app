@@ -26,9 +26,10 @@ import {
       users: state.users.filter(user => user._id !== action.payload)
     };
   case ADD_USER:
+    console.log(`reducer ${action.payload}`)
     return {
       ...state,
-      users: [action.payload, ...state.users]
+      users: [ ...state.users, action.payload]
     };
   case USERS_LOADING:
     return {

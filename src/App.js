@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
   chatsState: chatsReducer,
   error: errorReducer,
   auth: authReducer,
-  user: userReducer
+  userState: userReducer
 })
 
 const store = createStore(
@@ -30,8 +30,8 @@ const store = createStore(
 
 const App = () => {
   useEffect(() => {
-    store.dispatch(loadUser())
     store.dispatch(getUsers())
+    store.dispatch(loadUser())
 
   }, [])
 

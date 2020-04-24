@@ -26,6 +26,7 @@
   position: relative;
   top: 20px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .chatScreen .messageBox {
@@ -37,8 +38,13 @@
   position: relative;
   top: 20px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .chatScreen .userInput {
   margin-top: 70px;
+}
+
+.chatScreen .usersContainer {
+  padding-top: 70px;
 }
