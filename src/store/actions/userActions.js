@@ -20,7 +20,6 @@ export const getUsers = () => (dispatch) => {
 }
 
 export const addUser = (user) => (dispatch) => {
-  console.log('here2')
   axios
     .post('http://localhost:4000/api/users/saveUser', user)
     .then((res) =>

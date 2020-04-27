@@ -6,7 +6,6 @@ import io from 'socket.io-client'
 
 const ChatScreen = () => {
   let usersFromState = useSelector((state) => state.userState.users)
-  console.log('usersFromState ', usersFromState)
 
   const [usersArray, setUsersArray] = useState('')
   // setUsersArray(usersFromState)
@@ -97,7 +96,7 @@ const ChatScreen = () => {
       <div className="usersContainer">
       {usersFromState.map((user, i) => (
           <div className="messageBox" key={i}>
-            email : {user.email}
+            user : {user.email}
           </div>
         ))}
       </div>
