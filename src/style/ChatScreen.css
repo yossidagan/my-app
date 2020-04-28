@@ -17,18 +17,3 @@ input {
     padding-top: 30px;
 }
 
-.addUserBtn {
-    background: #78f161;
-    position: relative;
-    top: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.userInput {
-    margin-top: 70px;
-}
-
-.usersContainer {
-    padding-top: 70px;
-}

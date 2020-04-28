@@ -4,21 +4,19 @@ import { sendMessage } from '../../store/actions/chatsActions'
 import { addUser } from '../../store/actions/userActions'
 import io from 'socket.io-client'
 import '../../style/ChatScreen.css'
+import RegisterScreen from './RegisterScreen'
 
 const ChatScreen = () => {
+  const dispatch = useDispatch()
+
   let usersFromState = useSelector((state) => state.userState.users)
+  let chatsFromState = useSelector((state) => state.chatsState.chats)
 
   const [usersArray, setUsersArray] = useState('')
 
   const [data, setData] = useState({
-    userEmail: '',
-    userPassword: '',
     message: '',
   })
-
-  const dispatch = useDispatch()
-
-  let chatsFromState = useSelector((state) => state.chatsState.chats)
 
   const socket = io('localhost:4000')
 
@@ -30,7 +28,10 @@ const ChatScreen = () => {
     setUsersArray(usersFromState)
   }, [])
 
-  const handleChange = (e) => setData({ ...data, [e.target.name]: e.target.value })
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
+    data.message = ''
+  }
 
   const handlePress = (e) => {
     if (e.key === 'Enter') {
@@ -43,61 +44,28 @@ const ChatScreen = () => {
     await dispatch(sendMessage(data.message))
   }
 
-  const handleAddUser = async () => {
-    const newUser = {
-      email: data.userEmail,
-      password: data.userPassword,
-    }
-    await dispatch(addUser(newUser))
-  }
-
   return (
-    <div className="chatScreen">
-      <div className="">HI</div>
+    <div className='chatScreen'>
+      <div className=''>HI</div>
       <input
-        name="message"
+        name='message'
         value={data.message}
         onChange={handleChange}
         onKeyPress={handlePress}
-        placeholder="Your message here..."
+        placeholder='Your message here...'
       />
-      <div className="sendBtn" onClick={handleSendMessage}>
+      <div className='sendBtn' onClick={handleSendMessage}>
         Send
       </div>
-      <div className="messagesContainer">
+      <div className='messagesContainer'>
         {chatsFromState.map((chat, i) => (
-          <div className="messageBox" key={i}>
+          <div className='messageBox' key={i}>
             message : {chat.message}
           </div>
         ))}
       </div>
 
-      <input
-        name="userEmail"
-        value={data.userEmail}
-        onChange={handleChange}
-        onKeyPress={handlePress}
-        placeholder="New user email here..."
-        className="userInput"
-      />
-      <input
-        name="userPassword"
-        value={data.userPassword}
-        onChange={handleChange}
-        onKeyPress={handlePress}
-        placeholder="New user password here..."
-        className="userInput"
-      />
-      <div className="addUserBtn" onClick={handleAddUser}>
-        Add User
-      </div>
-      <div className="usersContainer">
-      {usersFromState.map((user, i) => (
-          <div className="messageBox" key={i}>
-            user : {user.email}
-          </div>
-        ))}
-      </div>
+      <RegisterScreen />
     </div>
   )
 }

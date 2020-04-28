@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   chatsState: chatsReducer,
   error: errorReducer,
   auth: authReducer,
-  userState: userReducer
+  userState: userReducer,
 })
 
 const store = createStore(
@@ -32,16 +32,14 @@ const store = createStore(
 const App = () => {
   useEffect(() => {
     store.dispatch(getUsers())
-    store.dispatch(loadUser())
-
   }, [])
 
   return (
     <Provider store={store}>
       <Router>
         <div className="App">
-        <Route exact path="/register" render={() => <RegisterScreen />} />
           <Route exact path="/" render={() => <ChatScreen />} />
+          <Route exact path="/register" render={() => <RegisterScreen />} />
         </div>
       </Router>
     </Provider>

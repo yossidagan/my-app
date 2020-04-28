@@ -1,7 +1,27 @@
-input {
+.registerInput {
+    display: block;
     background: transparent;
     margin-top: 20px;
     border: none;
     text-align: center;
+    width: 100%;
+
+}
+
+.inputContainer {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.usersContainer {
+    padding-top: 10px;
+}
+
+.registerUserBtn {
+    background: #78f161;
+    position: relative;
+    margin-top: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 
