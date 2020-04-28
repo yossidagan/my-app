@@ -32,6 +32,8 @@ const store = createStore(
 const App = () => {
   useEffect(() => {
     store.dispatch(getUsers())
+    store.dispatch(loadUser())
+
   }, [])
 
   return (

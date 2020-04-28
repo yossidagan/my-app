@@ -25,3 +25,10 @@
     cursor: pointer;
 }
 
+.errorMsg {
+    padding-top: 30px;
+}
+
+.loading {
+    padding-top: 30px;
+}

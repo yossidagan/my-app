@@ -3,19 +3,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import '../../style/RegisterScreen.css'
 import { addUser } from '../../store/actions/userActions'
+import { clearErrors } from '../../store/actions/errorActions'
+
+
 
 const RegisterScreen = () => {
   const dispatch = useDispatch()
 
   let usersFromState = useSelector((state) => state.userState.users)
-  const [usersArray, setUsersArray] = useState('')
-
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const error = useSelector((state) => state.error)
 
+  const [usersArray, setUsersArray] = useState('')
+  const [errorMsg, setErrorMsg] = useState('')
+
   useEffect(() => {
     setUsersArray(usersFromState)
-  }, [])
+    if (error.msg) {
+      console.log(error.msg)
+      setErrorMsg(error.msg.msg)
+    }
+  }, [error])
 
   const [data, setData] = useState({
     userName: '',
@@ -73,20 +81,26 @@ const RegisterScreen = () => {
       <div className='registerUserBtn' onClick={handleRegister}>
         Register User
       </div>
-      <div className='usersContainer'>
-        {usersFromState.map((user, i) => (
-          <div className='messageBox' key={i}>
-            user : {user.email}
-          </div>
-        ))}
-      </div>
+      {errorMsg ? <div className='errorMsg'>{errorMsg}</div> : null}
+
+      {usersFromState.length ? (
+        <div className='usersContainer'>
+          {usersFromState.map((user, i) => (
+            <div className='messageBox' key={i}>
+              user : {user.email}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className='loading'> Loading Users... </div>
+      )}
     </div>
   )
 }
 
 RegisterScreen.propTypes = {
   isAuthenticated: PropTypes.bool,
-  error: PropTypes.object,
+  error: PropTypes.object
 }
 
 export default RegisterScreen

@@ -46,10 +46,10 @@ export const addUser = (user) => (dispatch) => {
       })
     })
     .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'))
       dispatch({
         type: REGISTER_FAIL,
       })
-      dispatch(returnErrors(err.response.data, err.response.status))
     })
 }
 

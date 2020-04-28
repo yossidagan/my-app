@@ -40,8 +40,9 @@ export const tokenConfig = (getState) => {
   }
 
   if (token) {
-    config.headers['x-auth=token'] = token
+    config.headers['x-auth-token'] = token
   }
+  console.log(config)
 
   return config
 }
