@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { sendMessage } from '../store/actions/chatsActions'
-import { addUser } from '../store/actions/userActions'
+import { sendMessage } from '../../store/actions/chatsActions'
+import { addUser } from '../../store/actions/userActions'
 import io from 'socket.io-client'
+import '../../style/ChatScreen.css'
 
 const ChatScreen = () => {
   let usersFromState = useSelector((state) => state.userState.users)
 
   const [usersArray, setUsersArray] = useState('')
-  // setUsersArray(usersFromState)
 
   const [data, setData] = useState({
     userEmail: '',
@@ -30,8 +30,7 @@ const ChatScreen = () => {
     setUsersArray(usersFromState)
   }, [])
 
-  const handleChange = (e) =>
-    setData({ ...data, [e.target.name]: e.target.value })
+  const handleChange = (e) => setData({ ...data, [e.target.name]: e.target.value })
 
   const handlePress = (e) => {
     if (e.key === 'Enter') {
@@ -42,7 +41,6 @@ const ChatScreen = () => {
   const handleSendMessage = async () => {
     socket.emit('SEND_MESSAGE', data.message)
     await dispatch(sendMessage(data.message))
-    // data.message = ''
   }
 
   const handleAddUser = async () => {

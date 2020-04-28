@@ -12,39 +12,3 @@
   justify-self: center;
 
 }
-
-.chatScreen input {
-  background: transparent;
-  margin-top: 20px;
-  border: none;
-  text-align: center;
-
-}
-
-.chatScreen .sendBtn {
-  background: #babad0;
-  position: relative;
-  top: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.chatScreen .messageBox {
-  padding-top: 30px;
-}
-
-.chatScreen .addUserBtn {
-  background: #78f161;
-  position: relative;
-  top: 20px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.chatScreen .userInput {
-  margin-top: 70px;
-}
-
-.chatScreen .usersContainer {
-  padding-top: 70px;
-}

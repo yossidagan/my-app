@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { loadUser } from '../src/store/actions/authActions'
 import { getUsers } from '../src/store/actions/userActions'
 import thunk from 'redux-thunk'
-import ChatScreen from './components/ChatScreen'
+import ChatScreen from '../src/components/screens/ChatScreen'
 import chatsReducer from './store/reducers/chatsReducer'
 import authReducer from './store/reducers/authReducer'
 import errorReducer from './store/reducers/errorReducer'
 import userReducer from './store/reducers/userReducer'
+import RegisterScreen from './components/screens/RegisterScreen'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -39,6 +40,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className="App">
+        <Route exact path="/register" render={() => <RegisterScreen />} />
           <Route exact path="/" render={() => <ChatScreen />} />
         </div>
       </Router>

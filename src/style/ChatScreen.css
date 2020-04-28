@@ -1,0 +1,34 @@
+input {
+    background: transparent;
+    margin-top: 20px;
+    border: none;
+    text-align: center;
+}
+
+.sendBtn {
+    background: #babad0;
+    position: relative;
+    top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.messageBox {
+    padding-top: 30px;
+}
+
+.addUserBtn {
+    background: #78f161;
+    position: relative;
+    top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.userInput {
+    margin-top: 70px;
+}
+
+.usersContainer {
+    padding-top: 70px;
+}
