@@ -1,5 +1,17 @@
 .navbarContainer {
     display: grid;
-    grid-template-columns: 2fr 2fr 6fr;
+    grid-template-columns: 6fr 2fr 2fr ;
     width: 100%;
+    align-content: center;
+    justify-content: center;
+    background-color: bisque;
+}
+
+.navbarItem {
+    padding: 10px 0;
+}
+
+.navbarContainer .home {
+    justify-self: left;
+    padding-left: 3%;
 }

@@ -1,6 +1,6 @@
 import {
   GET_USERS,
-  ADD_USER,
+  REGISTER_USER,
   DELETE_USER,
   USERS_LOADING,
 } from '../actions/types'
@@ -23,7 +23,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         users: state.users.filter((user) => user._id !== action.payload),
       }
-    case ADD_USER:
+    case REGISTER_USER:
       console.log('payload', action.payload.user)
       return {
         ...state,

@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import LogoutButton from './LogoutButton'
+import { Link } from 'react-router-dom'
 import '../style/Navbar.css'
 
 const Navbar = () => {
-    
-const logout = () => {
-    
-}
-
-    return (
-        <div className='navbarContainer'>
-            <div className='navbarItem'>Logout</div>
-            <div className='navbarItem'>1</div>
-            <div className='navbarItem'>2</div>
-        </div>
-    )
-
+  return (
+    <div className='navbarContainer'>
+             <div className='navbarItem home'>
+        <Link to='/'>Home</Link>
+      </div>
+      <div className='navbarItem'>
+        <LogoutButton />
+      </div>
+      <div className='navbarItem'>
+        <Link to='/login-screen'>Login</Link>
+      </div>
+ 
+    </div>
+  )
 }
 
 export default Navbar

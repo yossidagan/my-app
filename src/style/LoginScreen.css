@@ -1,0 +1,18 @@
+.loginUserBtn {
+    background: #78f161;
+    position: relative;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 33%;
+    margin: 30px auto 0;
+}
+
+.loginScreenContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.contentContainer {
+    grid-column: 2;
+    padding-top: 30%;
+}

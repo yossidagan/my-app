@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { sendMessage } from '../../store/actions/chatsActions'
-import { addUser } from '../../store/actions/userActions'
+import { registerUser } from '../../store/actions/userActions'
 import io from 'socket.io-client'
 import '../../style/ChatScreen.css'
 import RegisterScreen from './RegisterScreen'

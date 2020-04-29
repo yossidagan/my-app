@@ -22,7 +22,7 @@ router.get("/user", auth, async (req, res) => {
 });
 
 router.post("/authUser", (req, res) => {
-
+console.log('here5')
   const { email, password} = req.body 
   
   if (!email || !password) {
@@ -40,7 +40,7 @@ router.post("/authUser", (req, res) => {
         jwt.sign(
           {id : user.id},
           config.get('jwtSecret'),
-          { expiresIn: 3600 },
+          { expiresIn: 36000 },
           (err, token) => {
             if (err) throw err
             res.json({

@@ -1,11 +1,13 @@
 import axios from 'axios'
 import {
   GET_USERS,
-  ADD_USER,
+  REGISTER_USER,
   DELETE_USER,
   USER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
 } from './types'
 import { tokenConfig } from './authActions'
 import { returnErrors } from './errorActions'
@@ -26,7 +28,7 @@ export const getUsers = () => (dispatch) => {
     )
 }
 
-export const addUser = (user) => (dispatch) => {
+export const registerUser = (user) => (dispatch) => {
   const config = {
     headers: {
       'Content-type': 'application/json',
@@ -37,18 +39,43 @@ export const addUser = (user) => (dispatch) => {
     .post('http://localhost:4000/api/users/saveUser', user, config)
     .then((res) => {
       dispatch({
-        type: ADD_USER,
-        payload: res.data,
+        type: REGISTER_USER,
+        payload: res.data
       })
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: res.data,
+        payload: res.data
       })
     })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'))
       dispatch({
-        type: REGISTER_FAIL,
+        type: REGISTER_FAIL
+      })
+    })
+}
+
+
+export const loginUser = (user) => (dispatch) => {
+  console.log(user)
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  }
+
+  axios
+    .post('http://localhost:4000/api/auth/authUser', user, config)
+    .then((res) => {
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      })
+    })
+    .catch((err) => {
+      dispatch(returnErrors(err.response.data, err.response.status, 'LOGIN_FAIL'))
+      dispatch({
+        type: LOGIN_FAIL
       })
     })
 }

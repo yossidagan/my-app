@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import '../../style/RegisterScreen.css'
-import { addUser } from '../../store/actions/userActions'
+import { registerUser } from '../../store/actions/userActions'
 import { clearErrors } from '../../store/actions/errorActions'
 
 
@@ -27,7 +27,7 @@ const RegisterScreen = () => {
   const [data, setData] = useState({
     userName: '',
     userEmail: '',
-    userPassword: '',
+    userPassword: ''
   })
 
   const handleChange = (e) => {
@@ -46,7 +46,7 @@ const RegisterScreen = () => {
       email: data.userEmail,
       password: data.userPassword,
     }
-    await dispatch(addUser(newUser))
+    await dispatch(registerUser(newUser))
   }
 
   return (
