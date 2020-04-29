@@ -6,13 +6,22 @@ import '../../style/LoginScreen.css'
 const LoginScreen = () => {
   const dispatch = useDispatch()
 
+  const error = useSelector((state) => state.error)
+
+  const [errorMsg, setErrorMsg] = useState('')
+
+  useEffect(() => {
+    if (error.id === 'LOGIN_FAIL') {
+      setErrorMsg(error.msg.msg)
+    }
+  }, [error])
+
   const [data, setData] = useState({
     userEmail: '',
     userPassword: '',
   })
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
-    data[e.target.name] = ''
   }
 
   const handlePress = (e) => {
@@ -27,6 +36,13 @@ const LoginScreen = () => {
       password: data.userPassword,
     }
     dispatch(loginUser(userCreds))
+    
+
+       if (error.msg) {
+      console.log(error.msg)
+      setErrorMsg(error.msg.msg)
+    }
+
   }
 
   return (
@@ -51,6 +67,8 @@ const LoginScreen = () => {
         <div className='loginUserBtn' onClick={handleLogin}>
           Login User
         </div>
+      {errorMsg ? <div className='errorMsg'>{errorMsg}</div> : null}
+
       </div>
     </div>
   )

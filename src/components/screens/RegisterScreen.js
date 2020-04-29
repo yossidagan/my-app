@@ -18,8 +18,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     setUsersArray(usersFromState)
-    if (error.msg) {
-      console.log(error.msg)
+    if (error.id === 'REGISTER_FAIL') {
       setErrorMsg(error.msg.msg)
     }
   }, [error])
