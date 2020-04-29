@@ -12,6 +12,7 @@ import authReducer from './store/reducers/authReducer'
 import errorReducer from './store/reducers/errorReducer'
 import userReducer from './store/reducers/userReducer'
 import RegisterScreen from './components/screens/RegisterScreen'
+import Navbar from './components/Navbar'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -40,6 +41,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className="App">
+          <Navbar/>
           <Route exact path="/" render={() => <ChatScreen />} />
           <Route exact path="/register" render={() => <RegisterScreen />} />
         </div>

@@ -6,7 +6,6 @@ import { addUser } from '../../store/actions/userActions'
 import { clearErrors } from '../../store/actions/errorActions'
 
 
-
 const RegisterScreen = () => {
   const dispatch = useDispatch()
 
